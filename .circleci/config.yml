@@ -1,0 +1,17 @@
+version: 2.1
+
+orbs:
+  github-release: duffn/github-release@dev:alpha
+
+jobs:
+  release:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - github-release/release:
+          organization: duffn
+
+workflows:
+  release:
+    jobs:
+      - release
