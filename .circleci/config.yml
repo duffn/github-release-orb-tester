@@ -14,8 +14,14 @@ jobs:
       - checkout
       - github-release/release:
           changelog: false
+  test:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - github-release/tester
 
 workflows:
   release:
     jobs:
       - release
+      - test
